@@ -1959,22 +1959,22 @@
 
 /* Icon */
 
-	.icon {
+	.fab {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
+		font-size: x-large;
 	}
 
-		.icon:before {
+		.fab:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
 		}
 
-		.icon > .label {
+		.fab > .label {
 			display: none;
 		}
 
