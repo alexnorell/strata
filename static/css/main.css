@@ -1959,14 +1959,14 @@
 
 /* Icon */
 
-	.fab {
+	.fab, .fas {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
 		font-size: x-large;
 	}
 
-		.fab:before {
+		.fab:before, .fas:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
 			font-style: normal;
@@ -1978,6 +1978,9 @@
 			display: none;
 		}
 
+		.fas > .label {
+			display: none;
+		}
 /* Image */
 
 	.image {
