@@ -1,17 +1,17 @@
 {{ define "main" }}
-	{{ if not .Site.Params.about.hide }}
+	{{ if isset .Site.Params "about" }}
 		{{ partial "about" . }}
 	{{ end }}
 
-	{{ if not .Site.Params.portfolio.hide }}
+	{{ if isset .Site.Params "portfolio" }}
 		{{ partial "portfolio" . }}
 	{{ end }}
 
-	{{ if not .Site.Params.recentposts.hide }}
+	{{ if isset .Site.Params "recentposts" }}
 		{{ partial "recent-posts" . }}
 	{{ end }}
 
-	{{ if not .Site.Params.contact.hide }}
+	{{ if isset .Site.Params "contact" }}
 		{{ partial "contact" . }}
 	{{ end }}
 {{ end }}
