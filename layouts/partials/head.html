@@ -14,13 +14,15 @@
 		{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 		{{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
 
-		{{ if not .Site.Params.OpenGraph.hide }}
-		<meta name="og:site_name" content="{{ .Site.Title }}">
-		<meta name="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-		<meta name="og:url" content="{{ .Permalink }}">
-		{{ if not .Site.Params.avatar.hide }}
-		<meta name="og:image" content="{{ .Site.BaseURL }}images/{{ .Site.Params.sidebar.avatar }}">
-		{{ end }}
+		{{ if (isset .Site.Params "OpenGraph") }}
+			<meta name="og:site_name" content="{{ .Site.Title }}">
+			<meta name="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+			<meta name="og:url" content="{{ .Permalink }}">
+			{{ if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "local") }}
+				<meta name="og:image" content="{{ .Site.BaseURL }}images/{{ .Site.Params.sidebar.avatar.local }}">
+			{{ else if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "github" )}}
+			<meta name="og:image" content="https://github.com/{{ .Site.Params.avatar.github }}.png">
+			{{ end }}
 		{{ end }}
 
 		{{ hugo.Generator }}
