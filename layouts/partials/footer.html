@@ -53,9 +53,12 @@
 		{{ with .pintrest }}
 		<li><a href="https://www.pintrest.com/{{ . }}/" target="_blank" class="fab fa-pintrest"><span class="label">Pintrest</span></a></li>
 		{{ end }}
-		{{ with .yelp }}
-		<li><a href="{{ . }}" target="_blank" class="fab fa-yelp"><span class="label">Yelp</span></a></li>
+		{{ with .yelp_biz }}
+		<li><a href="https://www.yelp.com/biz/{{ . }}" target="_blank" class="fab fa-yelp"><span class="label">Yelp</span></a></li>
 		{{ end }}
+		{{ with .yelp_user }}
+		<li><a href="https://www.yelp.com/user_details?userid={{ . }}" target="_blank" class="fab fa-yelp"><span class="label">Yelp</span></a></li>
+		{{ end}}
 		{{ with .vimeo }}
 		<li><a href="https://vimeo.com/{{ . }}" target="_blank" class="fab fa-vimeo"><span class="label">Vimeo</span></a></li>
 		{{ end }}
