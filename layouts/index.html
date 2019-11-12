@@ -7,6 +7,10 @@
 		{{ partial "portfolio" . }}
 	{{ end }}
 
+	{{ if isset .Site.Params "recipes" }}
+		{{ partial "recent-recipes" . }}
+	{{end}}
+
 	{{ if isset .Site.Params "recentposts" }}
 		{{ partial "recent-posts" . }}
 	{{ end }}
