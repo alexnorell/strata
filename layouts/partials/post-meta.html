@@ -24,3 +24,9 @@
        {{ end }}
    {{ end }}
 {{ end }}
+
+{{ if .Lastmod.After .Date }}
+&nbsp;&nbsp;
+<i class="fa fa-edit"></i>&nbsp;&nbsp;
+<time datetime="{{ .Lastmod }}">{{ .Lastmod.Format .Site.Params.date_format }}</time>&nbsp;&nbsp;
+{{ end }}

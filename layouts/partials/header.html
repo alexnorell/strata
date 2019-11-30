@@ -1,10 +1,15 @@
 {{ "<!-- Header -->" | safeHTML }}
 <header id="header">
-	{{ if not .Site.Params.avatar.hide }}
-	<a href="{{ .Site.BaseURL }}" class="image avatar"><img src="{{ .Site.BaseURL }}images/{{ .Site.Params.sidebar.avatar }}" alt="" /></a>
+	{{ if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "local") }}
+		<a href="{{ .Site.BaseURL }}" class="image avatar"><img src="{{ .Site.BaseURL }}images/{{ .Site.Params.avatar.local }}" alt="" /></a>
+	{{ else if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "github")}}
+		<a href="{{ .Site.BaseURL }}" class="image avatar"><img src="https://github.com/{{ .Site.Params.avatar.github }}.png" alt="" /></a>
 	{{ end }}
-	{{ with .Site.Params.sidebar.bio }}
+	{{ with .Site.Params.author }}
 		<h1>{{ . | markdownify }}</h1>
+	{{ end }}
+	{{ with .Site.Params.bio }}
+		<h2>{{ . | markdownify }}</h2>
 	{{ end }}
 
 	{{ with .Site.Menus.main }}

@@ -14,25 +14,27 @@
 		{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 		{{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
 
-		{{ if not .Site.Params.OpenGraph.hide }}
-		<meta name="og:site_name" content="{{ .Site.Title }}">
-		<meta name="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-		<meta name="og:url" content="{{ .Permalink }}">
-		{{ if not .Site.Params.avatar.hide }}
-		<meta name="og:image" content="{{ .Site.BaseURL }}images/{{ .Site.Params.sidebar.avatar }}">
-		{{ end }}
+		{{ if (isset .Site.Params "OpenGraph") }}
+			<meta name="og:site_name" content="{{ .Site.Title }}">
+			<meta name="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+			<meta name="og:url" content="{{ .Permalink }}">
+			{{ if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "local") }}
+				<meta name="og:image" content="{{ .Site.BaseURL }}images/{{ .Site.Params.sidebar.avatar.local }}">
+			{{ else if and (isset .Site.Params "avatar") (isset .Site.Params.avatar "github" )}}
+			<meta name="og:image" content="https://github.com/{{ .Site.Params.avatar.github }}.png">
+			{{ end }}
 		{{ end }}
 
-		{{ .Hugo.Generator }}
+		{{ hugo.Generator }}
 
 		{{ "<!--[if lte IE 8]>" | safeHTML }}<script src='{{ .Site.BaseURL }}js/ie/html5shiv.js'></script>{{ "<![endif]-->" | safeHTML}}
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/all.css">
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css" />
 		{{ "<!--[if lte IE 8]>" | safeHTML }}<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/ie8.css">{{ "<![endif]-->" | safeHTML}}
 
-		{{ with .RSSLink }}
-		<link href="{{ . }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
-		<link href="{{ . }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+		{{ with .OutputFormats.Get "RSS" }}
+		<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+		<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
 		{{ end }}
 		{{ range .Site.Params.custom_css }}
 		<link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">

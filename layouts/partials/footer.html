@@ -1,40 +1,97 @@
 {{ "<!-- Footer -->" | safeHTML }}
 <footer id="footer">
 	<ul class="icons">
-		{{ with .Site.Params.sidebar.googleplus }}
-		<li><a href="//plus.google.com/+{{ . }}" target="_blank" class="icon fa-google-plus"><span class="label">Google Plus</span></a></li>
+	{{ range .Site.Params.social }}
+		{{ with .github }}
+		<li><a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-github"><span class="label">GitHub</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.facebook }}
-        <li><a href="//facebook.com/{{ . }}" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-        {{ end }}
-		{{ with .Site.Params.sidebar.twitter }}
-		<li><a href="//twitter.com/{{ . }}" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+		{{ with .gitlab }}
+		<li><a href="https://www.gitlab.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-gitlab"><span class="label">GitLab</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.github }}
-		<li><a href="//github.com/{{ . }}" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		{{ with .bitbucket }}
+		<li><a href="https://www.bitbucket.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-bitbucket"><span class="label">Bitbucket</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.gitlab }}
-		<li><a href="//gitlab.com/{{ . }}" target="_blank" class="icon fa-gitlab"><span class="label">GitLab</span></a></li>
+		{{ with .twitter }}
+		<li><a href="https://www.twitter.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-twitter"><span class="label">Twitter</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.linkedin }}
-		<li><a href="//linkedin.com/in/{{ . }}" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		{{ with .linkedin }}
+		<li><a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-linkedin"><span class="label">Linkedin</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.dribbble }}
-		<li><a href="//dribbble.com/{{ . }}" target="_blank" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+		{{ with .keybase }}
+		<li><a href="https://www.keybase.io/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-keybase"><span class="label">Keybase</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.sidebar.flickr }}
-		<li><a href="//flickr.com/photos/{{ . }}" target="_blank" class="icon fa-flickr"><span class="label">Flickr</span></a></li>
+		{{ with .stackoverflow }}
+		<li><a href="https://www.stackoverflow.com/users/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-stack-overflow"><span class="label">Stackoverflow</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.contact.email }}
-		<li><a href="{{ $.Site.BaseURL }}#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		{{ with .facebook }}
+		<li><a href="https://facebook.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-facebook"><span class="label">Facebook</span></a></li>
 		{{ end }}
-		{{ if not .Site.Params.rss.hide }}
-		<li><a href="{{ if $.RSSLink }}{{ $.RSSLink }}{{ else }}{{ $.Site.RSSLink }}{{ end }}" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		{{ with .youtube }}
+		<li><a href="https://youtube.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-youtube"><span class="label">YouTube</span></a></li>
 		{{ end }}
+		{{ with .instagram }}
+		<li><a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-instagram"><span class="label">Instagram</span></a></li>
+		{{ end }}
+		{{ with .dribble }}
+		<li><a href="https://dribble.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-dribble"><span class="label">Dribble</span></a></li>
+		{{ end }}
+		{{ with .behance }}
+		<li><a href="https://www.behance.net/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-behance"><span class="label">Behance</span></a></li>
+		{{ end }}
+		{{ with .reddit }}
+		<li><a href="https://reddit.com/u/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-reddit"><span class="label">Reddit</span></a></li>
+		{{ end }}
+		{{ with .email }}
+		<li><a href="mailto:{{ . }}" target="_blank" rel="noopener noreferrer" class="fas fa-envelope"><span class="label">Email</span></a></li>
+		{{ end }}
+		{{ with .medium }}
+		<li><a href="https://medium.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-medium"><span class="label">Medium</span></a></li>
+		{{ end }}
+		{{ with .patreon }}
+		<li><a href="https://patreon.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-patreon"><span class="label">Patreon</span></a></li>
+		{{ end }}
+		{{ with .pintrest }}
+		<li><a href="https://www.pintrest.com/{{ . }}/" target="_blank" rel="noopener noreferrer" class="fab fa-pintrest"><span class="label">Pintrest</span></a></li>
+		{{ end }}
+		{{ with .yelp_biz }}
+		<li><a href="https://www.yelp.com/biz/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-yelp"><span class="label">Yelp</span></a></li>
+		{{ end }}
+		{{ with .yelp_user }}
+		<li><a href="https://www.yelp.com/user_details?userid={{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-yelp"><span class="label">Yelp</span></a></li>
+		{{ end}}
+		{{ with .vimeo }}
+		<li><a href="https://vimeo.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-vimeo"><span class="label">Vimeo</span></a></li>
+		{{ end }}
+		{{ with .untappd }}
+		<li><a href="https://untappd.com/user/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-untappd"><span class="label">Untapped</span></a></li>
+		{{ end }}
+		{{ with .twitch }}
+		<li><a href="https://www.twitch.tv/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-twitch"><span class="label">Twitch</span></a></li>
+		{{ end }}
+		{{ with .soundcloud }}
+		<li><a href="https://soundcloud.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-soundcloud"><span class="label">Soundcloud</span></a></li>
+		{{ end }}
+		{{ with .strava }}
+		<li><a href="https://strava.com/athletes/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-strava"><span class="label">Strava</span></a></li>
+		{{ end }}
+		{{ with .bandcamp }}
+		<li><a href="https://bandcamp.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-bandcamp"><span class="label">Bandcamp</span></a></li>
+		{{ end }}
+		{{ with .codepen }}
+		<li><a href="https://codepen.io/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-codepen"><span class="label">Codepen</span></a></li>
+		{{ end }}
+		{{ with .deviantart }}
+		<li><a href="https://www.deviantart.com/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-deviantart"><span class="label">Deviant Art</span></a></li>
+		{{ end }}
+		{{ with .ello }}
+		<li><a href="https://www.ello.co/{{ . }}" target="_blank" rel="noopener noreferrer" class="fab fa-ello"><span class="label">Ello</span></a></li>
+		{{ end }}
+	{{end}}
 	</ul>
 
 	<ul class="copyright">
-		{{ range .Site.Params.sidebar.copyright }}
+		<li>&copy; {{ now.Year }} {{ .Site.Params.author }}</li>
+		{{ range .Site.Params.copyright }}
 		<li>{{ . | markdownify }}</li>
 		{{ end }}
 	</ul>
