@@ -15,7 +15,6 @@ min_version = 0.60
 [original]
   name = "AJ"
   homepage = "//html5up.net/"
-  repo = ""
-[original]
+[port]
   name = "digitalcraftsman"
   homepage = "//github.com/digitalcraftsman"
